@@ -52,7 +52,7 @@ public class User implements UserDetails {
         this.name = data.name();
         this.email = data.email();
         this.password = data.password();
-        this.type = UserType.SIMPLE;
+        this.type = data.type();
     }
 
     @Override
