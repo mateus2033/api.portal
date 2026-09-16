@@ -1,7 +1,7 @@
 create table enterprises (
     id BIGINT NOT NULL auto_increment,
     name VARCHAR(150) NOT NULL,
-    cnpj VARCHAR(20) NOT NULL,
+    cnpj VARCHAR(18) UNIQUE NOT NULL,
     logo BLOB,
     user_id BIGINT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -26,7 +26,8 @@ public class Enterprise {
     private String cnpj;
 
     @Lob
-    private Blob logo;
+    @Column(name = "logo", columnDefinition = "LONGTEXT") // ou LONGTEXT no MySQL
+    private String logo;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -43,4 +44,11 @@ public class Enterprise {
 
     @UpdateTimestamp
     private LocalDate updated_at;
+
+    public Enterprise(String name, String cnpj, String logo, User user) {
+        this.name = name;
+        this.cnpj = cnpj;
+        this.logo = logo;
+        this.user = user;
+    }
 }
