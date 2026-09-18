@@ -1,6 +1,6 @@
 # API REST - Spring Boot
 
-API REST desenvolvida com **Java e Spring Boot**, utilizando Docker para o banco de dados.
+API REST em desenvolvimento com **Java e Spring Boot**, utilizando Docker para o banco de dados.
 
 ## Tecnologias
 
