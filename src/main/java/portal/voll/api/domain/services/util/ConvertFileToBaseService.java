@@ -1,4 +1,4 @@
-package portal.voll.api.domain.services.archives;
+package portal.voll.api.domain.services.util;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

@@ -30,13 +30,13 @@ public class AuthController {
     }
 
     @PostMapping("/sign-in")
-    public ResponseEntity<DataTokenJWT> authentication(@RequestBody @Valid Auth data) {
+    public ResponseEntity<DataTokenJWT> authentication(@RequestBody @Valid SignIn data) {
          String token = signInService.execute(data.email(), data.password());
          return ResponseEntity.ok(new DataTokenJWT(token));
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<ResponseJson<UserResponse>> register(@RequestBody @Valid Register data, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ResponseJson<UserResponse>> register(@RequestBody @Valid SignUp data, UriComponentsBuilder uriBuilder) {
         User user = signUpService.execute(data);
         URI location = uriBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri();
         UserResponse response = UserAssembler.toResponse(user);

@@ -8,29 +8,29 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import portal.voll.api.domain.entities.Enterprise;
 import portal.voll.api.domain.enums.response.ResponseJson;
-import portal.voll.api.domain.services.enterprise.CreateService;
-import portal.voll.api.domain.services.enterprise.UpdateService;
-import portal.voll.api.domain.valueobjects.enterprise.Register;
-import portal.voll.api.domain.valueobjects.enterprise.Update;
+import portal.voll.api.domain.services.enterprise.CreateEnterpriseService;
+import portal.voll.api.domain.services.enterprise.UpdateEnterpriseService;
+import portal.voll.api.domain.valueobjects.enterprise.RegisterEnterprise;
+import portal.voll.api.domain.valueobjects.enterprise.UpdateEnterprise;
 import java.net.URI;
 
 @RestController
 @RequestMapping("/enterprise")
 public class EnterpriseController {
 
-    final CreateService createService;
-    final UpdateService updateService;
+    final CreateEnterpriseService createService;
+    final UpdateEnterpriseService updateEnterpriseService;
 
     public EnterpriseController(
-            CreateService createService,
-            UpdateService updateService
+            CreateEnterpriseService createService,
+            UpdateEnterpriseService updateEnterpriseService
     ) {
         this.createService = createService;
-        this.updateService = updateService;
+        this.updateEnterpriseService = updateEnterpriseService;
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ResponseJson<EnterpriseResponse>> register(@ModelAttribute @Valid Register data, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<ResponseJson<EnterpriseResponse>> register(@ModelAttribute @Valid RegisterEnterprise data, UriComponentsBuilder uriBuilder) {
 
         Enterprise enterprise = createService.execute(
                 data.name(),
@@ -46,9 +46,9 @@ public class EnterpriseController {
     }
 
     @PutMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<ResponseJson<EnterpriseResponse>> update(@ModelAttribute @Valid Update data) {
+    public ResponseEntity<ResponseJson<EnterpriseResponse>> update(@ModelAttribute @Valid UpdateEnterprise data) {
 
-        Enterprise enterprise = updateService.execute(
+        Enterprise enterprise = updateEnterpriseService.execute(
                 data.id(),
                 data.name(),
                 data.cnpj(),

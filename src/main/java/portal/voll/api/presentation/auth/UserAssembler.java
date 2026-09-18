@@ -11,8 +11,7 @@ public class UserAssembler {
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
-                user.getType(),
-                user.getCreated_at()
+                user.getType()
         );
     }
 }
