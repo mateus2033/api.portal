@@ -1,11 +1,15 @@
 package portal.voll.api.domain.valueobjects.enterprise;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.springframework.web.multipart.MultipartFile;
 
+public record UpdateEnterprise(
 
-public record Register(
+        @NotNull
+        Long id,
+
         @NotBlank
         String name,
 

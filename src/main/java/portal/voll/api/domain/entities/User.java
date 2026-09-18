@@ -9,7 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import portal.voll.api.domain.enums.user.UserType;
-import portal.voll.api.domain.valueobjects.auth.Register;
+import portal.voll.api.domain.valueobjects.auth.SignUp;
 import java.util.Collection;
 import java.util.List;
 
@@ -48,7 +48,7 @@ public class User implements UserDetails {
     @UpdateTimestamp
     private String updated_at;
 
-    public User(Register data) {
+    public User(SignUp data) {
         this.name = data.name();
         this.email = data.email();
         this.password = data.password();

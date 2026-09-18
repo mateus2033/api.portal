@@ -1,12 +1,10 @@
 package portal.voll.api.domain.entities;
 
-import jakarta.persistence.*;
 import lombok.*;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
@@ -24,12 +22,7 @@ public class Address {
     private String city;
     private String street;
     private String number;
-    private String postal_code;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "job_opening_id", nullable = false)
-    @ToString.Exclude
-    private JobOpening jobOpening;
+    private String postalCode;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -37,4 +30,22 @@ public class Address {
 
     @UpdateTimestamp
     private LocalDateTime  updated_at;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_opening_id", nullable = false)
+    private JobOpening jobOpening;
+
+    public Address(
+        String city,
+        String street,
+        String number,
+        String postalCode,
+        JobOpening jobOpening
+    ){
+        this.city = city;
+        this.street = street;
+        this.number = number;
+        this.postalCode = postalCode;
+        this.jobOpening = jobOpening;
+    }
 }
