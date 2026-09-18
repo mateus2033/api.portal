@@ -6,7 +6,6 @@ public record UserResponse(
         Long id,
         String name,
         String email,
-        UserType type,
-        String created_at
+        UserType type
 ) {
 }

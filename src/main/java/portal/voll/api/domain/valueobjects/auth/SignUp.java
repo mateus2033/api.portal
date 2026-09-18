@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import portal.voll.api.domain.enums.user.UserType;
 
-public record Register(
+public record SignUp(
         @NotBlank
         String name,
 

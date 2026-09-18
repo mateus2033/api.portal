@@ -13,8 +13,9 @@ import portal.voll.api.domain.enums.response.ResponseJson;
 public class CustomExceptions {
 
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity notFound() {
-        return ResponseEntity.notFound().build();
+    public ResponseEntity<ResponseJson<String>> notFound(Exception ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ResponseJson<>(false, HttpStatus.NOT_FOUND.value(), ex.getMessage()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -23,10 +24,10 @@ public class CustomExceptions {
         return ResponseEntity.badRequest().body(error.stream().map(ErrorValidation::new).toList());
     }
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ResponseJson<String>> handleUserAlreadyExists(UserAlreadyExistsException ex) {
+    @ExceptionHandler(EntityAlreadyExistsException.class)
+    public ResponseEntity<ResponseJson<String>> handleUserAlreadyExists(EntityAlreadyExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(new ResponseJson<>(false, 409, ex.getMessage()));
+                .body(new ResponseJson<>(false, HttpStatus.CONFLICT.value(), ex.getMessage()));
     }
 
     @ExceptionHandler(BadCredentialsException.class)
@@ -34,10 +35,15 @@ public class CustomExceptions {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
     }
 
+    @ExceptionHandler(FileConversionException.class)
+    public ResponseEntity<String> handleFileConversion(FileConversionException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseJson<String>> handleGenericError(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ResponseJson<>(false, 500, ex.getMessage()));
+                .body(new ResponseJson<>(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage()));
     }
 
     private record ErrorValidation(String field, String message) {
