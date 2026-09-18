@@ -1,6 +1,6 @@
 # API REST - Spring Boot
 
-API REST em desenvolvimento com **Java e Spring Boot**, utilizando Docker para o banco de dados.
+API REST desenvolvida com **Java e Spring Boot**, utilizando Docker para o banco de dados.
 
 ## Tecnologias
 
@@ -11,18 +11,32 @@ API REST em desenvolvimento com **Java e Spring Boot**, utilizando Docker para o
 * Docker
 * Banco de dados SQL
 
+## Instalação
+
+Execute o comando:
+
+```bash
+docker compose up --build
+```
+
 ## Endpoints
 
-### Sign-in
+### Autenticação
 
-* `POST /sign-in/sign-in` — Login
-* `POST /sign-in/sign-up` — Cadastro de usuário
+| Método | Endpoint           | Descrição           |
+| ------ | ------------------ | ------------------- |
+| POST   | `/sign-in/sign-in` | Login               |
+| POST   | `/sign-in/sign-up` | Cadastro de usuário |
 
-### Enterprise
+### Empresas
 
-* `POST /enterprise` — Cadastro de empresa
-* `PUT /enterprise` — Atualização de empresa
+| Método | Endpoint      | Descrição         |
+| ------ | ------------- | ----------------- |
+| POST   | `/enterprise` | Cadastrar empresa |
+| PUT    | `/enterprise` | Atualizar empresa |
 
-### Jobs
+### Vagas
 
-* `POST /jobs` — Cadastro de vaga
+| Método | Endpoint | Descrição      |
+| ------ | -------- | -------------- |
+| POST   | `/jobs`  | Cadastrar vaga |
