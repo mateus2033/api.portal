@@ -22,7 +22,8 @@ public class Application {
     private Long id;
 
     @Lob
-    private Blob curriculum;
+    @Column(name = "curriculum", columnDefinition = "LONGTEXT")
+    private String curriculum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -40,4 +41,14 @@ public class Application {
 
     @UpdateTimestamp
     private LocalDate updated_at;
+
+    public Application(
+            String curriculum,
+            User user,
+            JobOpening jobOpening
+    ) {
+            this.curriculum = curriculum;
+            this.user = user;
+            this.jobOpening =  jobOpening;
+    }
 }

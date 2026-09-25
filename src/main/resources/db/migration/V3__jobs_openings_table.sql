@@ -1,6 +1,7 @@
-create table jobs_openings (
+create table job_openings (
     id BIGINT NOT NULL auto_increment,
-    code varchar(50) NOT NULL,
+    code varchar(50) UNIQUE NOT NULL,
+    name varchar(100) NOT NULL,
     type VARCHAR(20) NOT NULL,
     level VARCHAR(50) NOT NULL,
     application_limit INT UNSIGNED NOT NULL,
@@ -16,3 +17,6 @@ create table jobs_openings (
         FOREIGN KEY (enterprise_id)
         REFERENCES enterprises(id)
 );
+
+CREATE INDEX idx_job_openings_active_due_date ON job_openings (active, due_date);
+CREATE FULLTEXT INDEX search_job_opening ON job_openings (name);

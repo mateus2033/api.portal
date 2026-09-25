@@ -1,4 +1,4 @@
-package portal.voll.api.infra.repository;
+package portal.voll.api.infra.repository.enterprise;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

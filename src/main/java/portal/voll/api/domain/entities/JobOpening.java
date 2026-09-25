@@ -15,15 +15,23 @@ import java.util.List;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity(name = "JobOpening")
-@Table(name = "jobs_openings")
+@Table(name = "job_openings")
 public class JobOpening {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
+    private String name;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type", nullable = false)
     private JobOpeningType type;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "level", nullable = false)
     private JobOpeningLevel level;
+
     private Boolean active;
     private String description;
 
@@ -38,6 +46,7 @@ public class JobOpening {
 
     public JobOpening(
             String code,
+            String name,
             JobOpeningType type,
             JobOpeningLevel level,
             Integer applicationLimit,
@@ -48,6 +57,7 @@ public class JobOpening {
             Enterprise enterprise
     ) {
         this.code = code;
+        this.name = name;
         this.type = type;
         this.level = level;
         this.applicationLimit = applicationLimit;
