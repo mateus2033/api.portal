@@ -6,10 +6,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import portal.voll.api.domain.entities.Enterprise;
 import portal.voll.api.domain.entities.User;
-import portal.voll.api.domain.services.util.ConvertFileToBaseService;
+import portal.voll.api.domain.util.ConvertFileToBaseService;
 import portal.voll.api.domain.services.user.MeService;
 import portal.voll.api.infra.exception.EntityAlreadyExistsException;
-import portal.voll.api.infra.repository.EnterpriseRepository;
+import portal.voll.api.infra.repository.enterprise.EnterpriseRepository;
 
 @Service
 public class UpdateEnterpriseService {

@@ -10,5 +10,5 @@ create table addresses (
     PRIMARY KEY(id),
     CONSTRAINT fk_addresses_job_opening_id
         FOREIGN KEY (job_opening_id)
-        REFERENCES jobs_openings(id)
+        REFERENCES job_openings(id)
 );

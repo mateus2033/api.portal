@@ -26,7 +26,7 @@ public class Enterprise {
     private String cnpj;
 
     @Lob
-    @Column(name = "logo", columnDefinition = "LONGTEXT") // ou LONGTEXT no MySQL
+    @Column(name = "logo", columnDefinition = "LONGTEXT")
     private String logo;
 
     @ManyToOne(fetch = FetchType.LAZY)

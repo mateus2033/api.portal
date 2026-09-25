@@ -10,6 +10,9 @@ import portal.voll.api.domain.valueobjects.address.RegisterAddress;
 
 public record RegisterJobOpening(
 
+        @NotBlank
+        String name,
+
         @NotNull
         JobOpeningType type,
 

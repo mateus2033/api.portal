@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import portal.voll.api.domain.entities.User;
 import portal.voll.api.domain.valueobjects.auth.SignUp;
 import portal.voll.api.infra.exception.EntityAlreadyExistsException;
-import portal.voll.api.infra.repository.UserRepository;
+import portal.voll.api.infra.repository.user.UserRepository;
 
 @Service
 public class SignUpService {
