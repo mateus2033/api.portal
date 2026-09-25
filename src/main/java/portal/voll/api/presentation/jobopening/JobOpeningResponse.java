@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 public record JobOpeningResponse(
         String code,
+        String name,
         JobOpeningType type,
         JobOpeningLevel level,
         LocalDate publication_date,

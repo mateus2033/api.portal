@@ -4,7 +4,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.stereotype.Service;
 import portal.voll.api.domain.entities.User;
-import portal.voll.api.infra.repository.UserRepository;
+import portal.voll.api.infra.repository.user.UserRepository;
 import portal.voll.api.infra.security.TokenService;
 
 @Service

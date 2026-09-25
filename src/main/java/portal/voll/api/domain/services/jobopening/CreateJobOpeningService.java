@@ -10,9 +10,9 @@ import portal.voll.api.domain.entities.User;
 import portal.voll.api.domain.services.user.MeService;
 import portal.voll.api.domain.valueobjects.address.RegisterAddress;
 import portal.voll.api.domain.valueobjects.jobopening.RegisterJobOpening;
-import portal.voll.api.infra.repository.AddressRepository;
-import portal.voll.api.infra.repository.EnterpriseRepository;
-import portal.voll.api.infra.repository.JobOpeningRepository;
+import portal.voll.api.infra.repository.address.AddressRepository;
+import portal.voll.api.infra.repository.enterprise.EnterpriseRepository;
+import portal.voll.api.infra.repository.jobopening.JobOpeningRepository;
 
 import java.time.LocalDate;
 
@@ -59,6 +59,7 @@ public class CreateJobOpeningService {
 
         JobOpening jobOpening = new JobOpening(
                 code,
+                data.name(),
                 data.type(),
                 data.level(),
                 data.applicationLimit(),

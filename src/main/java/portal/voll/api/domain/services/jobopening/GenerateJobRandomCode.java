@@ -1,7 +1,7 @@
 package portal.voll.api.domain.services.jobopening;
 
 import org.springframework.stereotype.Service;
-import portal.voll.api.infra.repository.JobOpeningRepository;
+import portal.voll.api.infra.repository.jobopening.JobOpeningRepository;
 
 import java.util.Locale;
 import java.util.UUID;

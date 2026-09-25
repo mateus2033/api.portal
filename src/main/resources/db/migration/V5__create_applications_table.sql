@@ -9,7 +9,7 @@ create table applications (
 
     CONSTRAINT fk_applications_job_opening_id
         FOREIGN KEY (job_opening_id)
-        REFERENCES jobs_openings(id),
+        REFERENCES job_openings(id),
 
     CONSTRAINT fk_applications_user_id
         FOREIGN KEY (user_id)
