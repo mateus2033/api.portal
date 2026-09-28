@@ -14,6 +14,7 @@ public class ApplicationAssembler {
                 p.getJobName(),
                 p.getJobType(),
                 p.getJobLevel(),
+                p.getApplicationDate(),
                 p.getJobDescription()
         );
     }
