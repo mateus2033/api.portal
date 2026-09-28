@@ -22,8 +22,11 @@ public class MyApplications {
     }
 
     public Page<ApplicationInterfaceRepository> execute(Pageable pageable) {
+
+        var userId = meService.execute().getId();
+
         return applicationRepository.myApplications(
-                meService.execute().getId(),
+                userId,
                 pageable
         );
     }

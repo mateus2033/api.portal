@@ -23,6 +23,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
             job.name AS jobName,
             job.type AS jobType,
             job.level AS jobLevel,
+            app.application_date as applicationDate,
             job.description AS jobDescription
         FROM users u
         JOIN applications app ON app.user_id = u.id
