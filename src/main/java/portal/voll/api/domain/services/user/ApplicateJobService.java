@@ -13,6 +13,8 @@ import portal.voll.api.infra.exception.EntityAlreadyExistsException;
 import portal.voll.api.infra.repository.application.ApplicationRepository;
 import portal.voll.api.infra.repository.jobopening.JobOpeningRepository;
 
+import java.time.LocalDate;
+
 @Service
 public class ApplicateJobService {
 
@@ -51,7 +53,8 @@ public class ApplicateJobService {
         Application application = new Application(
                 curriculumFile,
                 user,
-                jobOpening
+                jobOpening,
+                LocalDate.now()
         );
 
         applicationRepository.save(application);

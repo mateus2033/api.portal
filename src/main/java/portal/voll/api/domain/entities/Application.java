@@ -25,6 +25,9 @@ public class Application {
     @Column(name = "curriculum", columnDefinition = "LONGTEXT")
     private String curriculum;
 
+    @Column(name = "application_date")
+    private LocalDate applicationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @ToString.Exclude
@@ -45,10 +48,12 @@ public class Application {
     public Application(
             String curriculum,
             User user,
-            JobOpening jobOpening
+            JobOpening jobOpening,
+            LocalDate applicationDate
     ) {
             this.curriculum = curriculum;
             this.user = user;
             this.jobOpening =  jobOpening;
+            this.applicationDate = applicationDate;
     }
 }
