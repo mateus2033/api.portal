@@ -15,25 +15,52 @@ public interface JobOpeningRepository extends JpaRepository<JobOpening, Long> {
 
     Boolean existsByCode(String code);
 
-    @Query(
-            value = """
-        SELECT j.*
-        FROM job_openings j
-        WHERE MATCH(j.name) AGAINST (:term IN BOOLEAN MODE)
-                AND j.active = true
-        """,
+    JobOpening getByIdAndEnterpriseId(Long jobId, Long enterpriseId);
+
+
+    @Query(value = """
+            SELECT
+                    job.id               AS "jobId",
+                    job.code             AS "code",
+                    job.name             AS "name",
+                    job.type             AS "type",
+                    job.level            AS "level",
+                    job.application_limit AS "applicationLimit",
+                    job.publication_date AS "publicationDate",
+                    job.due_date         AS "dueDate",
+                    job.active           AS "active",
+                    job.description      AS "description",
+                    ent.id               AS "enterpriseId",
+                    ent.user_id          AS "userId"
+                FROM job_openings job
+                JOIN enterprises ent ON job.enterprise_id = ent.id
+                WHERE ent.id = :enterpriseId
+                  AND ent.user_id = :userId
+                ORDER BY job.publication_date DESC
+            """,
             countQuery = """
-        SELECT COUNT(*)
-        FROM job_openings j
-        WHERE MATCH(j.name) AGAINST (:term IN BOOLEAN MODE)
-                AND j.active = true
-        """,
-            nativeQuery = true
+                    SELECT COUNT(*)
+                    FROM job_openings job
+                    JOIN enterprises ent ON job.enterprise_id = ent.id
+                    WHERE ent.id = :enterpriseId
+                    AND ent.user_id = :userId """,
+            nativeQuery = true)
+    Page<JobOpeningListProjection> listJobOpening(@Param("userId") Long userId, @Param("enterpriseId") Long enterpriseId, Pageable pageable);
+
+    @Query(value = """
+            SELECT j.*
+            FROM job_openings j
+            WHERE MATCH(j.name) AGAINST (:term IN BOOLEAN MODE)
+                    AND j.active = true
+            """,
+            countQuery = """
+                    SELECT COUNT(*)
+                    FROM job_openings j
+                    WHERE MATCH(j.name) AGAINST (:term IN BOOLEAN MODE)
+                            AND j.active = true
+                    """, nativeQuery = true
     )
-    Page<JobOpening> search(
-            @Param("term") String term,
-            Pageable pageable
-    );
+    Page<JobOpening> search(@Param("term") String term, Pageable pageable);
 
 
     @Modifying

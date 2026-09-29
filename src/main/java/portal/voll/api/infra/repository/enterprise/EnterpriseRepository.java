@@ -13,7 +13,7 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 
     Enterprise findByCnpj(String cnpj);
 
-    Enterprise findByIdAndUserId(Long id, Long user_id);
+    Enterprise findByIdAndUserId(Long enterpriseId, Long userId);
 
     @Query("SELECT e FROM Enterprise e WHERE e.cnpj = :cnpj AND e.id <> :id")
     Optional<Enterprise> findByCnpjExcludingId(@Param("cnpj") String cnpj, @Param("id") Long id);

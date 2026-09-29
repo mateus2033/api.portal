@@ -7,12 +7,12 @@ import portal.voll.api.domain.services.user.MeService;
 import portal.voll.api.infra.repository.application.ApplicationRepository;
 
 @Service
-public class RemoveUserApplication {
+public class RemoveApplicationService {
 
     final MeService meService;
     final ApplicationRepository applicationRepository;
 
-    public RemoveUserApplication(
+    public RemoveApplicationService(
             MeService meService,
             ApplicationRepository applicationRepository
     ) {

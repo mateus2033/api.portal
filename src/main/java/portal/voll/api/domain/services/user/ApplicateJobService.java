@@ -3,7 +3,6 @@ package portal.voll.api.domain.services.user;
 import jakarta.persistence.EntityNotFoundException;
 import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import portal.voll.api.domain.entities.Application;
 import portal.voll.api.domain.entities.JobOpening;
 import portal.voll.api.domain.entities.User;
@@ -35,7 +34,6 @@ public class ApplicateJobService {
         this.jobOpeningRepository = jobOpeningRepository;
     }
 
-    @Transactional
     public String execute(@NonNull ApplicateJob data) {
 
         User user = me.execute();

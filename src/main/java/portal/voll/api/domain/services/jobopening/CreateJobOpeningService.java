@@ -2,7 +2,6 @@ package portal.voll.api.domain.services.jobopening;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import portal.voll.api.domain.entities.Address;
 import portal.voll.api.domain.entities.Enterprise;
 import portal.voll.api.domain.entities.JobOpening;
@@ -13,21 +12,20 @@ import portal.voll.api.domain.valueobjects.jobopening.RegisterJobOpening;
 import portal.voll.api.infra.repository.address.AddressRepository;
 import portal.voll.api.infra.repository.enterprise.EnterpriseRepository;
 import portal.voll.api.infra.repository.jobopening.JobOpeningRepository;
-
 import java.time.LocalDate;
 
 @Service
 public class CreateJobOpeningService {
 
     final MeService me;
-    final GenerateJobRandomCode generateRandomCode;
+    final GenerateJobRandomCodeService generateRandomCode;
     final EnterpriseRepository enterpriseRepository;
     final JobOpeningRepository jobOpeningRepository;
     final AddressRepository addressRepository;
 
     public CreateJobOpeningService(
           MeService me,
-          GenerateJobRandomCode generateRandomCode,
+          GenerateJobRandomCodeService generateRandomCode,
           EnterpriseRepository enterpriseRepository,
           JobOpeningRepository jobOpeningRepository,
           AddressRepository addressRepository
@@ -39,7 +37,6 @@ public class CreateJobOpeningService {
         this.addressRepository = addressRepository;
     }
 
-    @Transactional
     public JobOpening execute(RegisterJobOpening data) {
 
         User userAuth = me.execute();
