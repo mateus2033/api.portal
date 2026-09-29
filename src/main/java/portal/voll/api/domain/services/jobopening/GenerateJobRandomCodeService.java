@@ -7,12 +7,12 @@ import java.util.Locale;
 import java.util.UUID;
 
 @Service
-public class GenerateJobRandomCode {
+public class GenerateJobRandomCodeService {
 
     private String code;
     final JobOpeningRepository jobOpeningRepository;
 
-    public GenerateJobRandomCode(JobOpeningRepository jobOpeningRepository) {
+    public GenerateJobRandomCodeService(JobOpeningRepository jobOpeningRepository) {
         this.jobOpeningRepository = jobOpeningRepository;
     }
 

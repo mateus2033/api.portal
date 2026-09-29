@@ -5,6 +5,7 @@ import portal.voll.api.domain.enums.jobopening.JobOpeningType;
 import java.time.LocalDate;
 
 public record JobOpeningResponse(
+        Long id,
         String code,
         String name,
         JobOpeningType type,

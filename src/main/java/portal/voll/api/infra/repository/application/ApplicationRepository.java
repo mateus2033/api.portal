@@ -8,11 +8,12 @@ import org.springframework.data.repository.query.Param;
 import portal.voll.api.domain.entities.Application;
 import portal.voll.api.domain.entities.JobOpening;
 import portal.voll.api.domain.entities.User;
-import java.util.List;
 
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
     Boolean existsByUserAndJobOpening(User user, JobOpening JobOpening);
+
+    Application getApplicationByIdAndUserId(Long id, Long userId);
 
     @Query(value = """
         SELECT
@@ -36,5 +37,5 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
         FROM applications app
         WHERE app.user_id = :userId
         """, nativeQuery = true)
-    Page<ApplicationInterfaceRepository> myApplications(@Param("userId") Long userId, Pageable pageable);
+    Page<ApplicationMyApplicationProjection> myApplications(@Param("userId") Long userId, Pageable pageable);
 }

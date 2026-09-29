@@ -7,11 +7,11 @@ import portal.voll.api.domain.entities.JobOpening;
 import portal.voll.api.infra.repository.jobopening.JobOpeningRepository;
 
 @Service
-public class SearchJobOpening {
+public class SearchJobOpeningService {
 
     final JobOpeningRepository jobOpeningRepository;
 
-    public SearchJobOpening(JobOpeningRepository jobOpeningRepository) {
+    public SearchJobOpeningService(JobOpeningRepository jobOpeningRepository) {
         this.jobOpeningRepository = jobOpeningRepository;
     }
 

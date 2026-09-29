@@ -1,7 +1,6 @@
 package portal.voll.api.domain.services.enterprise;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import portal.voll.api.domain.entities.Enterprise;
 import portal.voll.api.domain.entities.User;
@@ -27,7 +26,6 @@ public class CreateEnterpriseService {
         this.enterpriseRepository = enterpriseRepository;
     }
 
-    @Transactional
     public Enterprise execute(String name, String cnpj, MultipartFile logo) {
 
         Enterprise existingEnterprise = enterpriseRepository.findByCnpj(cnpj);
