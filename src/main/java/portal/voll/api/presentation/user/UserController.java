@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import portal.voll.api.domain.enums.response.ResponseJson;
 import portal.voll.api.domain.services.user.ApplicateJobService;
@@ -20,6 +21,7 @@ public class UserController {
     }
 
     @PostMapping(value = "applicatejob", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @Transactional
     public ResponseEntity<ResponseJson<String>> register(@ModelAttribute @Valid ApplicateJob data) {
 
         String response = applicateJobService.execute(data);

@@ -3,6 +3,7 @@ package portal.voll.api.presentation.auth;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import portal.voll.api.domain.entities.User;
@@ -30,12 +31,14 @@ public class AuthController {
     }
 
     @PostMapping("/sign-in")
+    @Transactional
     public ResponseEntity<DataTokenJWT> authentication(@RequestBody @Valid SignIn data) {
          String token = signInService.execute(data.email(), data.password());
          return ResponseEntity.ok(new DataTokenJWT(token));
     }
 
     @PostMapping("/sign-up")
+    @Transactional
     public ResponseEntity<ResponseJson<UserResponse>> register(@RequestBody @Valid SignUp data, UriComponentsBuilder uriBuilder) {
         User user = signUpService.execute(data);
         URI location = uriBuilder.path("/users/{id}").buildAndExpand(user.getId()).toUri();

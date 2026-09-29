@@ -68,11 +68,11 @@ public class JobOpening {
         this.enterprise = enterprise;
     }
 
-    @OneToMany(mappedBy = "jobOpening")
+    @OneToMany(mappedBy = "jobOpening",cascade = CascadeType.REMOVE, orphanRemoval = true)
     @ToString.Exclude
     private List<Application> applicationList;
 
-    @OneToOne(mappedBy = "jobOpening", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "jobOpening", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Address address;
 
     @ManyToOne(fetch = FetchType.LAZY)

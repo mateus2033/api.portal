@@ -2,7 +2,6 @@ package portal.voll.api.domain.services.enterprise;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import portal.voll.api.domain.entities.Enterprise;
 import portal.voll.api.domain.entities.User;
@@ -28,7 +27,6 @@ public class UpdateEnterpriseService {
         this.enterpriseRepository = enterpriseRepository;
     }
 
-    @Transactional
     public Enterprise execute(Long id, String name, String cnpj, MultipartFile logo) {
 
         User userAuth = me.execute();

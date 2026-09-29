@@ -4,16 +4,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import portal.voll.api.domain.services.user.MeService;
-import portal.voll.api.infra.repository.application.ApplicationInterfaceRepository;
+import portal.voll.api.infra.repository.application.ApplicationMyApplicationProjection;
 import portal.voll.api.infra.repository.application.ApplicationRepository;
 
 @Service
-public class MyApplications {
+public class MyApplicationService {
 
     final MeService meService;
     final ApplicationRepository applicationRepository;
 
-    public MyApplications(
+    public MyApplicationService(
             MeService meService,
             ApplicationRepository applicationRepository
     ) {
@@ -21,7 +21,7 @@ public class MyApplications {
         this.applicationRepository = applicationRepository;
     }
 
-    public Page<ApplicationInterfaceRepository> execute(Pageable pageable) {
+    public Page<ApplicationMyApplicationProjection> execute(Pageable pageable) {
 
         var userId = meService.execute().getId();
 
